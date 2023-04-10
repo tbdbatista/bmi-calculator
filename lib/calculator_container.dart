@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'my_colors.dart';
 
@@ -19,33 +18,6 @@ class CalculatorContainer extends StatelessWidget {
         color: color,
       ),
       child: childContainer,
-    );
-  }
-}
-
-class ChildContainer extends StatelessWidget {
-  const ChildContainer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Icon(
-          FontAwesomeIcons.mars,
-          size: 80,
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          'HOMEM',
-          style: TextStyle(
-            fontSize: 18,
-            color: MyColors.foregroundColor,
-          ),
-        ),
-      ],
     );
   }
 }

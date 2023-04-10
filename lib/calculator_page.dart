@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'calculator_container.dart';
+import 'icon_container.dart';
 import 'my_colors.dart';
 
 const double bottomButtonHeight = 50;
@@ -31,11 +33,17 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
                 children: const [
                   Expanded(
                       child: CalculatorContainer(
-                    childContainer: ChildContainer(),
+                    childContainer: IconContainer(
+                      sex: 'HOMEM',
+                      fontAwesomeIcon: FontAwesomeIcons.mars,
+                    ),
                   )),
                   Expanded(
                       child: CalculatorContainer(
-                    childContainer: ChildContainer(),
+                    childContainer: IconContainer(
+                      sex: 'MULHER',
+                      fontAwesomeIcon: FontAwesomeIcons.venus,
+                    ),
                   )),
                 ],
               ),
@@ -45,7 +53,10 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
                 children: const [
                   Expanded(
                       child: CalculatorContainer(
-                    childContainer: ChildContainer(),
+                    childContainer: IconContainer(
+                      sex: 'advertisement',
+                      fontAwesomeIcon: FontAwesomeIcons.adversal,
+                    ),
                   )),
                 ],
               ),
