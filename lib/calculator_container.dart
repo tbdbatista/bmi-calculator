@@ -4,8 +4,10 @@ import 'my_colors.dart';
 
 class CalculatorContainer extends StatelessWidget {
   final Color color;
+  final Widget? childContainer;
 
-  CalculatorContainer({super.key, this.color = MyColors.secondaryColor});
+  const CalculatorContainer(
+      {super.key, this.color = MyColors.secondaryColor, this.childContainer});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +17,18 @@ class CalculatorContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: color,
       ),
+      child: childContainer,
+    );
+  }
+}
+
+class ChildContainer extends StatelessWidget {
+  const ChildContainer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text("lalalala"),
     );
   }
 }

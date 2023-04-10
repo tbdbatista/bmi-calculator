@@ -1,8 +1,6 @@
-import 'dart:ffi';
-
-import 'package:calculadora_bmi/calculator_container.dart';
 import 'package:flutter/material.dart';
 
+import 'calculator_container.dart';
 import 'my_colors.dart';
 
 const double bottomButtonHeight = 50;
@@ -30,16 +28,16 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
           children: [
             Expanded(
               child: Row(
-                children: [
+                children: const [
                   Expanded(child: CalculatorContainer()),
                   Expanded(child: CalculatorContainer()),
                 ],
               ),
             ),
-            Expanded(child: CalculatorContainer()),
+            const Expanded(child: CalculatorContainer()),
             Expanded(
               child: Row(
-                children: [
+                children: const [
                   Expanded(child: CalculatorContainer()),
                   Expanded(child: CalculatorContainer()),
                 ],
