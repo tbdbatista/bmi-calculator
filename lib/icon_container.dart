@@ -8,8 +8,8 @@ const double spaceBetween = 10;
 
 class IconContainer extends StatelessWidget {
   const IconContainer(
-      {super.key, required this.sex, required this.fontAwesomeIcon});
-  final String sex;
+      {super.key, required this.iconTitle, required this.fontAwesomeIcon});
+  final String iconTitle;
   final IconData fontAwesomeIcon;
 
   @override
@@ -25,7 +25,7 @@ class IconContainer extends StatelessWidget {
           height: spaceBetween,
         ),
         Text(
-          sex,
+          iconTitle,
           style: const TextStyle(
             fontSize: fontSize,
             color: MyColors.foregroundColor,

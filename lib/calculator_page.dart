@@ -6,6 +6,8 @@ import 'icon_container.dart';
 import 'my_colors.dart';
 
 const double bottomButtonHeight = 50;
+const String maleTitle = 'HOMEM';
+const String femaleTitle = 'MULHER';
 
 class BMICalculatorPage extends StatefulWidget {
   const BMICalculatorPage({super.key, required this.title});
@@ -17,6 +19,19 @@ class BMICalculatorPage extends StatefulWidget {
 }
 
 class _BMICalculatorPageState extends State<BMICalculatorPage> {
+  Color femaleColor = MyColors.inactiveColor;
+  Color maleColor = MyColors.inactiveColor;
+
+  void updateColor(String iconTitle) {
+    if (iconTitle == maleTitle) {
+      maleColor = MyColors.secondaryColor;
+      femaleColor = MyColors.inactiveColor;
+    } else if (iconTitle == femaleTitle) {
+      maleColor = MyColors.inactiveColor;
+      femaleColor = MyColors.secondaryColor;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,21 +45,38 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
           children: [
             Expanded(
               child: Row(
-                children: const [
+                children: [
                   Expanded(
-                      child: CalculatorContainer(
-                    childContainer: IconContainer(
-                      sex: 'HOMEM',
-                      fontAwesomeIcon: FontAwesomeIcons.mars,
+                      child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        updateColor(maleTitle);
+                      });
+                    },
+                    child: CalculatorContainer(
+                      color: maleColor,
+                      childContainer: const IconContainer(
+                        iconTitle: maleTitle,
+                        fontAwesomeIcon: FontAwesomeIcons.mars,
+                      ),
                     ),
                   )),
                   Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          updateColor(femaleTitle);
+                        });
+                      },
                       child: CalculatorContainer(
-                    childContainer: IconContainer(
-                      sex: 'MULHER',
-                      fontAwesomeIcon: FontAwesomeIcons.venus,
+                        color: femaleColor,
+                        childContainer: const IconContainer(
+                          iconTitle: femaleTitle,
+                          fontAwesomeIcon: FontAwesomeIcons.venus,
+                        ),
+                      ),
                     ),
-                  )),
+                  ),
                 ],
               ),
             ),
@@ -52,12 +84,13 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
               child: Row(
                 children: const [
                   Expanded(
-                      child: CalculatorContainer(
-                    childContainer: IconContainer(
-                      sex: 'advertisement',
-                      fontAwesomeIcon: FontAwesomeIcons.adversal,
+                    child: CalculatorContainer(
+                      childContainer: IconContainer(
+                        iconTitle: 'advertisement',
+                        fontAwesomeIcon: FontAwesomeIcons.adversal,
+                      ),
                     ),
-                  )),
+                  ),
                 ],
               ),
             ),
@@ -80,9 +113,13 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
                 //   foregroundColor: MaterialStateProperty.all<Color?>(
                 //       MyColors.foregroundColor),
                 // ),
-                child: const Text('CALCULAR IMC',
-                    style: TextStyle(
-                        fontSize: 20, color: MyColors.foregroundColor)),
+                child: const Text(
+                  'CALCULAR IMC',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: MyColors.foregroundColor,
+                  ),
+                ),
               ),
             )
           ],
