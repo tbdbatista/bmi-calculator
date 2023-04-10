@@ -1,16 +1,13 @@
-# calculadora_bmi
+# BMI Calculator App - Flutter
 
-A new Flutter project.
+This is a simple BMI Calculator app made with Flutter. The app calculates BMI based on user's height and weight input.
 
-## Getting Started
+## Using the App
 
-This project is a starting point for a Flutter application.
+When you launch the app, you will see a single view with three widgets input your height and weight. After selecting your values, click the "Calculate BMI" button to see your calculated BMI.
 
-A few resources to get you started if this is your first Flutter project:
+## Acknowledgments
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+This project was created for study purposes and was inspired by the lectures in section 12 of the \'Complete Flutter App Development Bootcamp with Dart\', provided by Angela Yu.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
