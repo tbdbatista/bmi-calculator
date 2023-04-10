@@ -29,12 +29,27 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
             Expanded(
               child: Row(
                 children: const [
-                  Expanded(child: CalculatorContainer()),
-                  Expanded(child: CalculatorContainer()),
+                  Expanded(
+                      child: CalculatorContainer(
+                    childContainer: ChildContainer(),
+                  )),
+                  Expanded(
+                      child: CalculatorContainer(
+                    childContainer: ChildContainer(),
+                  )),
                 ],
               ),
             ),
-            const Expanded(child: CalculatorContainer()),
+            Expanded(
+              child: Row(
+                children: const [
+                  Expanded(
+                      child: CalculatorContainer(
+                    childContainer: ChildContainer(),
+                  )),
+                ],
+              ),
+            ),
             Expanded(
               child: Row(
                 children: const [
@@ -50,11 +65,13 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
               height: bottomButtonHeight,
               child: TextButton(
                 onPressed: () {},
-                style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color?>(
-                      MyColors.foregroundColor),
-                ),
-                child: const Text('CALCULAR IMC'),
+                // style: ButtonStyle(
+                //   foregroundColor: MaterialStateProperty.all<Color?>(
+                //       MyColors.foregroundColor),
+                // ),
+                child: const Text('CALCULAR IMC',
+                    style: TextStyle(
+                        fontSize: 20, color: MyColors.foregroundColor)),
               ),
             )
           ],

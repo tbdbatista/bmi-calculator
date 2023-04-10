@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'my_colors.dart';
 
@@ -27,8 +28,24 @@ class ChildContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("lalalala"),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: const [
+        Icon(
+          FontAwesomeIcons.mars,
+          size: 80,
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Text(
+          'HOMEM',
+          style: TextStyle(
+            fontSize: 18,
+            color: MyColors.foregroundColor,
+          ),
+        ),
+      ],
     );
   }
 }
