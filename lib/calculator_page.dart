@@ -12,26 +12,14 @@ const String femaleTitle = 'MULHER';
 enum ContainerType { male, female }
 
 class BMICalculatorPage extends StatefulWidget {
-  const BMICalculatorPage({super.key, required this.title});
-
-  final String title;
+  const BMICalculatorPage({super.key});
 
   @override
   State<BMICalculatorPage> createState() => _BMICalculatorPageState();
 }
 
 class _BMICalculatorPageState extends State<BMICalculatorPage> {
-  Color femaleColor = MyColors.inactiveColor;
-  Color maleColor = MyColors.inactiveColor;
-
-  void updateColor(ContainerType containerType) {
-    maleColor = (containerType == ContainerType.male)
-        ? MyColors.secondaryColor
-        : MyColors.inactiveColor;
-    femaleColor = (containerType == ContainerType.female)
-        ? MyColors.secondaryColor
-        : MyColors.inactiveColor;
-  }
+  ContainerType? containerType;
 
   @override
   Widget build(BuildContext context) {
@@ -51,11 +39,13 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
-                          updateColor(ContainerType.male);
+                          containerType = ContainerType.male;
                         });
                       },
                       child: CalculatorContainer(
-                        color: maleColor,
+                        color: (containerType == ContainerType.male)
+                            ? MyColors.secondaryColor
+                            : MyColors.inactiveColor,
                         childContainer: const IconContainer(
                           iconTitle: maleTitle,
                           fontAwesomeIcon: FontAwesomeIcons.mars,
@@ -67,11 +57,13 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
-                          updateColor(ContainerType.female);
+                          containerType = ContainerType.female;
                         });
                       },
                       child: CalculatorContainer(
-                        color: femaleColor,
+                        color: (containerType == ContainerType.female)
+                            ? MyColors.secondaryColor
+                            : MyColors.inactiveColor,
                         childContainer: const IconContainer(
                           iconTitle: femaleTitle,
                           fontAwesomeIcon: FontAwesomeIcons.venus,
