@@ -9,6 +9,8 @@ const double bottomButtonHeight = 50;
 const String maleTitle = 'HOMEM';
 const String femaleTitle = 'MULHER';
 
+enum ContainerType { male, female, advertisement }
+
 class BMICalculatorPage extends StatefulWidget {
   const BMICalculatorPage({super.key, required this.title});
 
@@ -22,13 +24,15 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
   Color femaleColor = MyColors.inactiveColor;
   Color maleColor = MyColors.inactiveColor;
 
-  void updateColor(String iconTitle) {
-    if (iconTitle == maleTitle) {
-      maleColor = MyColors.secondaryColor;
-      femaleColor = MyColors.inactiveColor;
-    } else if (iconTitle == femaleTitle) {
-      maleColor = MyColors.inactiveColor;
-      femaleColor = MyColors.secondaryColor;
+  void updateColor(ContainerType containerType) {
+    switch (containerType) {
+      case ContainerType.male:
+        maleColor = MyColors.secondaryColor;
+        femaleColor = MyColors.inactiveColor;
+        break;
+      case ContainerType.female:
+        maleColor = MyColors.inactiveColor;
+        femaleColor = MyColors.secondaryColor;
     }
   }
 
@@ -47,25 +51,26 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
               child: Row(
                 children: [
                   Expanded(
-                      child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        updateColor(maleTitle);
-                      });
-                    },
-                    child: CalculatorContainer(
-                      color: maleColor,
-                      childContainer: const IconContainer(
-                        iconTitle: maleTitle,
-                        fontAwesomeIcon: FontAwesomeIcons.mars,
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          updateColor(ContainerType.male);
+                        });
+                      },
+                      child: CalculatorContainer(
+                        color: maleColor,
+                        childContainer: const IconContainer(
+                          iconTitle: maleTitle,
+                          fontAwesomeIcon: FontAwesomeIcons.mars,
+                        ),
                       ),
                     ),
-                  )),
+                  ),
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
-                          updateColor(femaleTitle);
+                          updateColor(ContainerType.female);
                         });
                       },
                       child: CalculatorContainer(
@@ -121,6 +126,9 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
                   ),
                 ),
               ),
+            ),
+            Container(
+              height: 30,
             )
           ],
         ),
