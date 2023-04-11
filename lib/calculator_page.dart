@@ -36,38 +36,34 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          containerType = ContainerType.male;
-                        });
-                      },
-                      child: CalculatorContainer(
-                        color: (containerType == ContainerType.male)
-                            ? MyColors.secondaryColor
-                            : MyColors.inactiveColor,
-                        childContainer: const IconContainer(
-                          iconTitle: maleTitle,
-                          fontAwesomeIcon: FontAwesomeIcons.mars,
-                        ),
+                    child: CalculatorContainer(
+                      color: (containerType == ContainerType.male)
+                          ? MyColors.secondaryColor
+                          : MyColors.inactiveColor,
+                      childContainer: IconContainer(
+                        iconTitle: maleTitle,
+                        fontAwesomeIcon: FontAwesomeIcons.mars,
+                        didTap: () {
+                          setState(() {
+                            containerType = ContainerType.male;
+                          });
+                        },
                       ),
                     ),
                   ),
                   Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          containerType = ContainerType.female;
-                        });
-                      },
-                      child: CalculatorContainer(
-                        color: (containerType == ContainerType.female)
-                            ? MyColors.secondaryColor
-                            : MyColors.inactiveColor,
-                        childContainer: const IconContainer(
-                          iconTitle: femaleTitle,
-                          fontAwesomeIcon: FontAwesomeIcons.venus,
-                        ),
+                    child: CalculatorContainer(
+                      color: (containerType == ContainerType.female)
+                          ? MyColors.secondaryColor
+                          : MyColors.inactiveColor,
+                      childContainer: IconContainer(
+                        iconTitle: femaleTitle,
+                        fontAwesomeIcon: FontAwesomeIcons.venus,
+                        didTap: () {
+                          setState(() {
+                            containerType = ContainerType.female;
+                          });
+                        },
                       ),
                     ),
                   ),
@@ -103,10 +99,6 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
               height: bottomButtonHeight,
               child: TextButton(
                 onPressed: () {},
-                // style: ButtonStyle(
-                //   foregroundColor: MaterialStateProperty.all<Color?>(
-                //       MyColors.foregroundColor),
-                // ),
                 child: const Text(
                   'CALCULAR IMC',
                   style: TextStyle(
