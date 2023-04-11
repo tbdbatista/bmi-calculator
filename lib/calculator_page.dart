@@ -9,7 +9,7 @@ const double bottomButtonHeight = 50;
 const String maleTitle = 'HOMEM';
 const String femaleTitle = 'MULHER';
 
-enum ContainerType { male, female, advertisement }
+enum ContainerType { male, female }
 
 class BMICalculatorPage extends StatefulWidget {
   const BMICalculatorPage({super.key, required this.title});
@@ -25,15 +25,12 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
   Color maleColor = MyColors.inactiveColor;
 
   void updateColor(ContainerType containerType) {
-    switch (containerType) {
-      case ContainerType.male:
-        maleColor = MyColors.secondaryColor;
-        femaleColor = MyColors.inactiveColor;
-        break;
-      case ContainerType.female:
-        maleColor = MyColors.inactiveColor;
-        femaleColor = MyColors.secondaryColor;
-    }
+    maleColor = (containerType == ContainerType.male)
+        ? MyColors.secondaryColor
+        : MyColors.inactiveColor;
+    femaleColor = (containerType == ContainerType.female)
+        ? MyColors.secondaryColor
+        : MyColors.inactiveColor;
   }
 
   @override
@@ -129,7 +126,7 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
             ),
             Container(
               height: 30,
-            )
+            ),
           ],
         ),
       ),
