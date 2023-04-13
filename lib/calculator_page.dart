@@ -22,7 +22,8 @@ class BMICalculatorPage extends StatefulWidget {
 class _BMICalculatorPageState extends State<BMICalculatorPage> {
   ContainerType? containerType;
   int height = 170;
-  int weight = 80;
+  int weight = 70;
+  int age = 30;
 
   @override
   Widget build(BuildContext context) {
@@ -135,9 +136,31 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              RoundButton(),
-                              RoundButton(),
+                            children: [
+                              RoundButton(
+                                icon: const Icon(
+                                  FontAwesomeIcons.minus,
+                                  color: MyColors.contrastColor,
+                                  size: 26,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    weight -= 1;
+                                  });
+                                },
+                              ),
+                              RoundButton(
+                                icon: const Icon(
+                                  FontAwesomeIcons.plus,
+                                  color: MyColors.contrastColor,
+                                  size: 25,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    weight += 1;
+                                  });
+                                },
+                              ),
                             ],
                           ),
                           const Text(
@@ -148,7 +171,53 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
                       ),
                     ),
                   ),
-                  const Expanded(child: CalculatorContainer()),
+                  Expanded(
+                    child: CalculatorContainer(
+                      childContainer: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            age.toString(),
+                            style: MyStiles.biggerStyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              RoundButton(
+                                icon: const Icon(
+                                  FontAwesomeIcons.minus,
+                                  color: MyColors.contrastColor,
+                                  size: 26,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    age -= 1;
+                                  });
+                                },
+                              ),
+                              RoundButton(
+                                icon: const Icon(
+                                  FontAwesomeIcons.plus,
+                                  color: MyColors.contrastColor,
+                                  size: 25,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    age += 1;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                          const Text(
+                            'IDADE',
+                            style: MyStiles.mainStyle,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
