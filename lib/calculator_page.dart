@@ -135,9 +135,9 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const RoundButton(),
-                              const RoundButton(),
+                            children: const [
+                              RoundButton(),
+                              RoundButton(),
                             ],
                           ),
                           const Text(
