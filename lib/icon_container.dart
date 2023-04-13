@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
-import 'my_colors.dart';
+import 'my_constants.dart';
 
 const double iconSize = 80;
-const double fontSize = 18;
 const double spaceBetween = 10;
 
 class IconContainer extends StatelessWidget {
@@ -22,21 +21,15 @@ class IconContainer extends StatelessWidget {
     return GestureDetector(
       onTap: didTap,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Icon(
             fontAwesomeIcon,
             size: iconSize,
           ),
-          const SizedBox(
-            height: spaceBetween,
-          ),
           Text(
             iconTitle,
-            style: const TextStyle(
-              fontSize: fontSize,
-              color: MyColors.foregroundColor,
-            ),
+            style: MyStiles.mainStyle,
           ),
         ],
       ),
