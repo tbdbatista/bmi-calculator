@@ -1,9 +1,10 @@
+import 'package:calculadora_bmi/round_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'calculator_container.dart';
 import 'icon_container.dart';
-import 'my_colors.dart';
+import 'my_constants.dart';
 
 const double bottomButtonHeight = 50;
 const String maleTitle = 'HOMEM';
@@ -20,6 +21,8 @@ class BMICalculatorPage extends StatefulWidget {
 
 class _BMICalculatorPageState extends State<BMICalculatorPage> {
   ContainerType? containerType;
+  int height = 170;
+  int weight = 80;
 
   @override
   Widget build(BuildContext context) {
@@ -71,24 +74,81 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
               ),
             ),
             Expanded(
-              child: Row(
-                children: const [
-                  Expanded(
-                    child: CalculatorContainer(
-                      childContainer: IconContainer(
-                        iconTitle: 'advertisement',
-                        fontAwesomeIcon: FontAwesomeIcons.adversal,
+              child: CalculatorContainer(
+                childContainer: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text(
+                          height.toString(),
+                          style: MyStiles.biggerStyle,
+                        ),
+                        const Text(
+                          ' cm',
+                          style: MyStiles.mainStyle,
+                        ),
+                      ],
+                    ),
+                    SliderTheme(
+                      data: const SliderThemeData(
+                        activeTrackColor: MyColors.contrastColor,
+                        trackHeight: 1,
+                        thumbColor: MyColors.contrastColor,
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 12),
+                      ),
+                      child: Slider(
+                        min: 120,
+                        max: 220,
+                        value: height.toDouble(),
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.toInt();
+                          });
+                        },
                       ),
                     ),
-                  ),
-                ],
+                    const Text(
+                      'ALTURA',
+                      style: MyStiles.mainStyle,
+                    ),
+                  ],
+                ),
               ),
             ),
             Expanded(
               child: Row(
-                children: const [
-                  Expanded(child: CalculatorContainer()),
-                  Expanded(child: CalculatorContainer()),
+                children: [
+                  Expanded(
+                    child: CalculatorContainer(
+                      childContainer: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            weight.toString(),
+                            style: MyStiles.biggerStyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const RoundButton(),
+                              const RoundButton(),
+                            ],
+                          ),
+                          const Text(
+                            'PESO',
+                            style: MyStiles.mainStyle,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const Expanded(child: CalculatorContainer()),
                 ],
               ),
             ),
@@ -109,7 +169,7 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
               ),
             ),
             Container(
-              height: 30,
+              height: 20,
             ),
           ],
         ),
