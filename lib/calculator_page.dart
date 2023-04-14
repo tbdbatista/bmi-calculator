@@ -6,7 +6,7 @@ import 'calculator_container.dart';
 import 'icon_container.dart';
 import 'my_constants.dart';
 
-const double bottomButtonHeight = 50;
+const double bottomButtonHeight = 80;
 const String maleTitle = 'HOMEM';
 const String femaleTitle = 'MULHER';
 
@@ -32,139 +32,92 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
         backgroundColor: MyColors.primaryColor,
         title: const Text('Calculadora IMC'),
       ),
-      body: Container(
-        margin: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            Expanded(
-              child: Row(
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.all(10),
+              child: Column(
                 children: [
                   Expanded(
-                    child: CalculatorContainer(
-                      color: (containerType == ContainerType.male)
-                          ? MyColors.secondaryColor
-                          : MyColors.inactiveColor,
-                      childContainer: IconContainer(
-                        iconTitle: maleTitle,
-                        fontAwesomeIcon: FontAwesomeIcons.mars,
-                        didTap: () {
-                          setState(() {
-                            containerType = ContainerType.male;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: CalculatorContainer(
-                      color: (containerType == ContainerType.female)
-                          ? MyColors.secondaryColor
-                          : MyColors.inactiveColor,
-                      childContainer: IconContainer(
-                        iconTitle: femaleTitle,
-                        fontAwesomeIcon: FontAwesomeIcons.venus,
-                        didTap: () {
-                          setState(() {
-                            containerType = ContainerType.female;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: CalculatorContainer(
-                childContainer: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                      textBaseline: TextBaseline.alphabetic,
+                    child: Row(
                       children: [
-                        Text(
-                          height.toString(),
-                          style: MyStiles.biggerStyle,
+                        Expanded(
+                          child: CalculatorContainer(
+                            color: (containerType == ContainerType.male)
+                                ? MyColors.secondaryColor
+                                : MyColors.inactiveColor,
+                            childContainer: IconContainer(
+                              iconTitle: maleTitle,
+                              fontAwesomeIcon: FontAwesomeIcons.mars,
+                              didTap: () {
+                                setState(() {
+                                  containerType = ContainerType.male;
+                                });
+                              },
+                            ),
+                          ),
                         ),
-                        const Text(
-                          ' cm',
-                          style: MyStiles.mainStyle,
+                        Expanded(
+                          child: CalculatorContainer(
+                            color: (containerType == ContainerType.female)
+                                ? MyColors.secondaryColor
+                                : MyColors.inactiveColor,
+                            childContainer: IconContainer(
+                              iconTitle: femaleTitle,
+                              fontAwesomeIcon: FontAwesomeIcons.venus,
+                              didTap: () {
+                                setState(() {
+                                  containerType = ContainerType.female;
+                                });
+                              },
+                            ),
+                          ),
                         ),
                       ],
                     ),
-                    SliderTheme(
-                      data: const SliderThemeData(
-                        activeTrackColor: MyColors.contrastColor,
-                        trackHeight: 1,
-                        thumbColor: MyColors.contrastColor,
-                        thumbShape:
-                            RoundSliderThumbShape(enabledThumbRadius: 12),
-                      ),
-                      child: Slider(
-                        min: 120,
-                        max: 220,
-                        value: height.toDouble(),
-                        onChanged: (double newValue) {
-                          setState(() {
-                            height = newValue.toInt();
-                          });
-                        },
-                      ),
-                    ),
-                    const Text(
-                      'ALTURA',
-                      style: MyStiles.mainStyle,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              child: Row(
-                children: [
+                  ),
                   Expanded(
                     child: CalculatorContainer(
                       childContainer: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Text(
-                            weight.toString(),
-                            style: MyStiles.biggerStyle,
-                          ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
                             children: [
-                              RoundButton(
-                                icon: const Icon(
-                                  FontAwesomeIcons.minus,
-                                  color: MyColors.contrastColor,
-                                  size: 26,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    weight -= 1;
-                                  });
-                                },
+                              Text(
+                                height.toString(),
+                                style: MyStiles.biggerStyle,
                               ),
-                              RoundButton(
-                                icon: const Icon(
-                                  FontAwesomeIcons.plus,
-                                  color: MyColors.contrastColor,
-                                  size: 25,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    weight += 1;
-                                  });
-                                },
+                              const Text(
+                                ' cm',
+                                style: MyStiles.mainStyle,
                               ),
                             ],
                           ),
+                          SliderTheme(
+                            data: const SliderThemeData(
+                              activeTrackColor: MyColors.contrastColor,
+                              trackHeight: 1,
+                              thumbColor: MyColors.contrastColor,
+                              thumbShape:
+                                  RoundSliderThumbShape(enabledThumbRadius: 12),
+                            ),
+                            child: Slider(
+                              min: 120,
+                              max: 220,
+                              value: height.toDouble(),
+                              onChanged: (double newValue) {
+                                setState(() {
+                                  height = newValue.toInt();
+                                });
+                              },
+                            ),
+                          ),
                           const Text(
-                            'PESO',
+                            'ALTURA',
                             style: MyStiles.mainStyle,
                           ),
                         ],
@@ -172,76 +125,131 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
                     ),
                   ),
                   Expanded(
-                    child: CalculatorContainer(
-                      childContainer: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            age.toString(),
-                            style: MyStiles.biggerStyle,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              RoundButton(
-                                icon: const Icon(
-                                  FontAwesomeIcons.minus,
-                                  color: MyColors.contrastColor,
-                                  size: 26,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: CalculatorContainer(
+                            childContainer: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  weight.toString(),
+                                  style: MyStiles.biggerStyle,
                                 ),
-                                onPressed: () {
-                                  setState(() {
-                                    age -= 1;
-                                  });
-                                },
-                              ),
-                              RoundButton(
-                                icon: const Icon(
-                                  FontAwesomeIcons.plus,
-                                  color: MyColors.contrastColor,
-                                  size: 25,
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    RoundButton(
+                                      icon: const Icon(
+                                        FontAwesomeIcons.minus,
+                                        color: MyColors.contrastColor,
+                                        size: 26,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          weight -= 1;
+                                        });
+                                      },
+                                    ),
+                                    RoundButton(
+                                      icon: const Icon(
+                                        FontAwesomeIcons.plus,
+                                        color: MyColors.contrastColor,
+                                        size: 25,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          weight += 1;
+                                        });
+                                      },
+                                    ),
+                                  ],
                                 ),
-                                onPressed: () {
-                                  setState(() {
-                                    age += 1;
-                                  });
-                                },
-                              ),
-                            ],
+                                const Text(
+                                  'PESO',
+                                  style: MyStiles.mainStyle,
+                                ),
+                              ],
+                            ),
                           ),
-                          const Text(
-                            'IDADE',
-                            style: MyStiles.mainStyle,
+                        ),
+                        Expanded(
+                          child: CalculatorContainer(
+                            childContainer: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  age.toString(),
+                                  style: MyStiles.biggerStyle,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    RoundButton(
+                                      icon: const Icon(
+                                        FontAwesomeIcons.minus,
+                                        color: MyColors.contrastColor,
+                                        size: 26,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          age -= 1;
+                                        });
+                                      },
+                                    ),
+                                    RoundButton(
+                                      icon: const Icon(
+                                        FontAwesomeIcons.plus,
+                                        color: MyColors.contrastColor,
+                                        size: 25,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          age += 1;
+                                        });
+                                      },
+                                    ),
+                                  ],
+                                ),
+                                const Text(
+                                  'IDADE',
+                                  style: MyStiles.mainStyle,
+                                ),
+                              ],
+                            ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-            Container(
-              color: MyColors.contrastColor,
-              margin: const EdgeInsets.only(top: 10),
-              width: double.infinity,
-              height: bottomButtonHeight,
-              child: TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'CALCULAR IMC',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: MyColors.foregroundColor,
-                  ),
+          ),
+          Container(
+            color: MyColors.contrastColor,
+            margin: const EdgeInsets.only(top: 10),
+            width: double.infinity,
+            height: bottomButtonHeight,
+            padding: const EdgeInsets.only(bottom: 5.0),
+            child: TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/result');
+              },
+              child: const Text(
+                'CALCULAR IMC',
+                style: TextStyle(
+                  color: MyColors.foregroundColor,
+                  fontSize: 25.0,
                 ),
               ),
             ),
-            Container(
-              height: 20,
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
