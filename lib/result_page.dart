@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'my_constants.dart';
+import 'navigation_button.dart';
 
 class ResultPage extends StatelessWidget {
   const ResultPage({Key? key}) : super(key: key);
@@ -14,19 +15,19 @@ class ResultPage extends StatelessWidget {
         backgroundColor: MyColors.primaryColor,
         title: const Text('Calculadora IMC'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 32.0, left: 8),
-              child: Text(
-                'Resultado',
-                style: MyStiles.biggerStyle,
-              ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 28.0, left: 18),
+            child: Text(
+              'Resultado',
+              style: MyStiles.biggerStyle,
             ),
-            Expanded(
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: CalculatorContainer(
                 childContainer: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -56,8 +57,14 @@ class ResultPage extends StatelessWidget {
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+          NavigationButton(
+            title: 'VOLTAR',
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+        ],
       ),
     );
   }

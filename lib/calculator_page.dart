@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'calculator_container.dart';
 import 'icon_container.dart';
 import 'my_constants.dart';
+import 'navigation_button.dart';
 
 const double bottomButtonHeight = 80;
 const String maleTitle = 'HOMEM';
@@ -230,24 +231,13 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
               ),
             ),
           ),
-          Container(
-            color: MyColors.contrastColor,
-            margin: const EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: bottomButtonHeight,
-            padding: const EdgeInsets.only(bottom: 5.0),
-            child: TextButton(
-              onPressed: () {
+          NavigationButton(
+            title: 'CALCULAR IMC',
+            onTap: () {
+              setState(() {
                 Navigator.pushNamed(context, '/result');
-              },
-              child: const Text(
-                'CALCULAR IMC',
-                style: TextStyle(
-                  color: MyColors.foregroundColor,
-                  fontSize: 25.0,
-                ),
-              ),
-            ),
+              });
+            },
           ),
         ],
       ),
