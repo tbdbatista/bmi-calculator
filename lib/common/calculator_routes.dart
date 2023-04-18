@@ -1,7 +1,7 @@
-import 'package:calculadora_bmi/result_page.dart';
+import 'package:calculadora_bmi/pages/result_page.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'calculator_page.dart';
+import '../pages/calculator_page.dart';
 
 class CalculatorRoutes {
   Map<String, Widget Function(BuildContext)> routes = {

@@ -1,11 +1,11 @@
-import 'package:calculadora_bmi/round_button.dart';
+import 'package:calculadora_bmi/components/round_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'calculator_container.dart';
-import 'icon_container.dart';
-import 'my_constants.dart';
-import 'navigation_button.dart';
+import '../components/calculator_container.dart';
+import '../components/icon_container.dart';
+import '../common/my_constants.dart';
+import '../components/navigation_button.dart';
 
 const double bottomButtonHeight = 80;
 const String maleTitle = 'HOMEM';

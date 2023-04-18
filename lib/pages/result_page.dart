@@ -1,9 +1,8 @@
-import 'package:calculadora_bmi/calculator_container.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:calculadora_bmi/components/calculator_container.dart';
 import 'package:flutter/material.dart';
 
-import 'my_constants.dart';
-import 'navigation_button.dart';
+import '../common/my_constants.dart';
+import '../components/navigation_button.dart';
 
 class ResultPage extends StatelessWidget {
   const ResultPage({Key? key}) : super(key: key);
