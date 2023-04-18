@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../components/calculator_container.dart';
 import '../components/icon_container.dart';
-import '../common/my_constants.dart';
+import '../resources/my_constants.dart';
 import '../components/navigation_button.dart';
 
 const double bottomButtonHeight = 80;

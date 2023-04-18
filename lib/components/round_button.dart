@@ -1,4 +1,4 @@
-import 'package:calculadora_bmi/common/my_constants.dart';
+import 'package:calculadora_bmi/resources/my_constants.dart';
 import 'package:flutter/material.dart';
 
 class RoundButton extends StatelessWidget {

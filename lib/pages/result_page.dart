@@ -1,7 +1,7 @@
 import 'package:calculadora_bmi/components/calculator_container.dart';
 import 'package:flutter/material.dart';
 
-import '../common/my_constants.dart';
+import '../resources/my_constants.dart';
 import '../components/navigation_button.dart';
 
 class ResultPage extends StatelessWidget {

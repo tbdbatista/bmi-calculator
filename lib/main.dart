@@ -1,4 +1,4 @@
-import 'package:calculadora_bmi/common/calculator_routes.dart';
+import 'package:calculadora_bmi/resources/calculator_routes.dart';
 import 'package:flutter/material.dart';
 
 void main() {

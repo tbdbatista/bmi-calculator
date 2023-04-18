@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../pages/calculator_page.dart';
-import '../common/my_constants.dart';
+import '../resources/my_constants.dart';
 
 class NavigationButton extends StatelessWidget {
   const NavigationButton({

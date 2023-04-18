@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../common/my_constants.dart';
+import '../resources/my_constants.dart';
 
 class CalculatorContainer extends StatelessWidget {
   final Color color;
