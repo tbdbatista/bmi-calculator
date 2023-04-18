@@ -5,7 +5,16 @@ import '../resources/my_constants.dart';
 import '../components/navigation_button.dart';
 
 class ResultPage extends StatelessWidget {
-  const ResultPage({Key? key}) : super(key: key);
+  const ResultPage(
+      {Key? key,
+      required this.bmiResult,
+      required this.resultText,
+      required this.interpretationText})
+      : super(key: key);
+
+  final String bmiResult;
+  final String resultText;
+  final String interpretationText;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +26,8 @@ class ResultPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 28.0, left: 18),
+          const Padding(
+            padding: EdgeInsets.only(bottom: 28.0, left: 18),
             child: Text(
               'Resultado',
               style: MyStiles.biggerStyle,
@@ -32,8 +41,8 @@ class ResultPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      'NORMAL',
-                      style: TextStyle(
+                      resultText,
+                      style: const TextStyle(
                         color: MyColors.contrastColor,
                         fontSize: 20,
                       ),
@@ -41,16 +50,22 @@ class ResultPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        '22.1',
-                        style: TextStyle(
+                        bmiResult,
+                        style: const TextStyle(
                           fontSize: 50,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
-                    Text(
-                      'Here comes the sun',
-                      style: MyStiles.mainStyle,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        interpretationText,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
                     ),
                   ],
                 ),

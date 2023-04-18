@@ -1,4 +1,5 @@
 import 'package:calculadora_bmi/components/round_button.dart';
+import 'package:calculadora_bmi/pages/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -6,6 +7,7 @@ import '../components/calculator_container.dart';
 import '../components/icon_container.dart';
 import '../resources/my_constants.dart';
 import '../components/navigation_button.dart';
+import '../resources/calculator_controller.dart';
 
 const double bottomButtonHeight = 80;
 const String maleTitle = 'HOMEM';
@@ -21,6 +23,7 @@ class BMICalculatorPage extends StatefulWidget {
 }
 
 class _BMICalculatorPageState extends State<BMICalculatorPage> {
+  final CalculatorController _calculatorController = CalculatorController();
   ContainerType? containerType;
   int height = 170;
   int weight = 70;
@@ -235,7 +238,18 @@ class _BMICalculatorPageState extends State<BMICalculatorPage> {
             title: 'CALCULAR IMC',
             onTap: () {
               setState(() {
-                Navigator.pushNamed(context, '/result');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultPage(
+                      bmiResult:
+                          _calculatorController.calculateBMI(height, weight),
+                      resultText: _calculatorController.getResult().first,
+                      interpretationText:
+                          _calculatorController.getResult().last,
+                    ),
+                  ),
+                );
               });
             },
           ),
